@@ -2,8 +2,10 @@
 
 # BAECKEND ESLINT CHECK
 ###########################
-STAGED_FILES=($(git diff --diff-filter=d --cached --name-only ./js | grep -E '^.*src\/.*\.(js|jsx|tsx|ts)$'))
+#STAGED_FILES=($(git diff --diff-filter=d --cached --name-only ./js | grep -E '^.*src\/.*\.(js|jsx|tsx|ts)$'))
+STAGED_FILES=($(git diff  --name-status ./js))
 
+echo "List of Staged Files"
 echo $STAGED_FILES
 STAGED_FILES=$STAGED_FILES
 
@@ -20,11 +22,11 @@ npm run lint --prefix ./js -- "${STAGED_FILES[@]}"
 ESLINT_EXIT="$?"
 
 # Re-add files since they may have been fixed
-git add "${STAGED_FILES[@]}"
+#git add "${STAGED_FILES[@]}"
 
-if [[ "${ESLINT_EXIT}" == 0 ]]; then
-  echo ""
-else
-  printf "\n\033[41mCOMMIT FAILED:\033[0m Fix eslint errors and try again\n"
-  exit 1
-fi
+#if [[ "${ESLINT_EXIT}" == 0 ]]; then
+#  echo ""
+#else
+#  printf "\n\033[41mCOMMIT FAILED:\033[0m Fix eslint errors and try again\n"
+#  exit 1
+#fi
