@@ -11,13 +11,15 @@ STAGED_FILES=$STAGED_FILES
 
 for i in "${!STAGED_FILES[@]}"; do
   DATA=${STAGED_FILES[$i]}
+  echo $DATA
   pattern="js/"
   DATA=${DATA/$pattern/}
   STAGED_FILES[$i]=$DATA
+  echo $STAGED_FILES[$i]
 done
 
 #npm run lint --prefix ./js -- "${STAGED_FILES[@]}" --fix
-npm run lint --prefix ./js -- "${STAGED_FILES[@]}" 
+npm run lint --prefix *.js -- "${STAGED_FILES[@]}" 
 
 ESLINT_EXIT="$?"
 
