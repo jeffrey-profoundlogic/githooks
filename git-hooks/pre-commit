@@ -2,10 +2,10 @@
 
 # BAECKEND ESLINT CHECK
 ###########################
-BACKEND_STAGED_FILES=($(git diff --diff-filter=d --cached --name-only ./js | grep -E '^.*src\/.*\.(js|jsx|tsx|ts)$'))
+STAGED_FILES=($(git diff --diff-filter=d --cached --name-only ./js | grep -E '^.*src\/.*\.(js|jsx|tsx|ts)$'))
 
-echo $BACKEND_STAGED_FILES
-STAGED_FILES=$BACKEND_STAGED_FILES
+echo $STAGED_FILES
+STAGED_FILES=$STAGED_FILES
 
 for i in "${!STAGED_FILES[@]}"; do
   DATA=${STAGED_FILES[$i]}
@@ -14,12 +14,13 @@ for i in "${!STAGED_FILES[@]}"; do
   STAGED_FILES[$i]=$DATA
 done
 
-npm run lint --prefix ./js -- "${STAGED_FILES[@]}" --fix
+#npm run lint --prefix ./js -- "${STAGED_FILES[@]}" --fix
+npm run lint --prefix ./js -- "${STAGED_FILES[@]}" 
 
 ESLINT_EXIT="$?"
 
 # Re-add files since they may have been fixed
-git add "${BACKEND_STAGED_FILES[@]}"
+git add "${STAGED_FILES[@]}"
 
 if [[ "${ESLINT_EXIT}" == 0 ]]; then
   echo ""
