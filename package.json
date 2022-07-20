@@ -1,0 +1,24 @@
+{
+  "name": "githooks",
+  "version": "1.0.0",
+  "description": "Example of ESLINT with git hooks",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeffrey-profoundlogic/githooks.git"
+  },
+  "author": "Jeffrey C. Williams",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jeffrey-profoundlogic/githooks/issues"
+  },
+  "homepage": "https://github.com/jeffrey-profoundlogic/githooks#readme",
+  "devDependencies": {
+    "eslint": "^8.20.0",
+    "eslint-html-reporter": "^0.7.4"
+  }
+}
