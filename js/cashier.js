@@ -1,4 +1,4 @@
-
+// Comments
 export default function() {
 
   // Set up global scope, arguments, and screen history
